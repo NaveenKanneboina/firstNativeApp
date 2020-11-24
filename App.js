@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+  const [input, setInput] = useState("")
+  const [toDo, setToDo] = useState([])
+  const add = () => {
+    setToDo([...toDo, input])
+    setInput("")
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View>
+        <TextInput style={styles.input} placeholder="Enter Task" onChange={(e)=>setInput(e.target.value)} value={input}/>
+        <Button title="ADD" style={styles.button} onPress={add} disabled={!input}/>
+      </View>
+      <View>
+        {toDo.map(task => <Text> {toDo.indexOf(task) + 1} {task.toUpperCase()}</Text>)}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin:20,
   },
+  button:{
+    marginBottom:50,
+  },
+  input:{
+    margin: 10,
+    borderBottomColor:"black",
+    borderBottomWidth: 1,
+  }
 });
