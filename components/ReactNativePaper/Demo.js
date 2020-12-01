@@ -52,7 +52,7 @@ const Demo = () => {
         <Menu
           visible={visible}
           onDismiss={closeMenu}
-          anchor={<Button size={50} icon="menu" onPress={openMenu}/>}>
+          anchor={<Button size={50} icon="menu" onPress={openMenu}>hello</Button>}>
           <Menu.Item onPress={() => {}} title="Item 1" />
           <Menu.Item onPress={() => {}} title="Item 2" />
           <Divider />
