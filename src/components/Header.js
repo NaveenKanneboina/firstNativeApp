@@ -1,11 +1,13 @@
 import React from 'react';
-import { useTheme, Appbar, TouchableRipple, Switch } from 'react-native-paper';
-import { PreferencesContext } from '../../App';
+import { useTheme, Appbar, Switch } from 'react-native-paper';
+import { StyleSheet } from 'react-native'
+import { PreferencesContext } from "../context/PreferencesContext";
 
-const Header = () => {
+
+const Header = ({}) => {
+
   const theme = useTheme();
   const { toggleTheme, isThemeDark } = React.useContext(PreferencesContext);
-
   return (
     <Appbar.Header
       theme={{
@@ -14,16 +16,17 @@ const Header = () => {
         },
       }}
     >
-      <Appbar.Content title="Dark" />
-      <TouchableRipple onPress={() => toggleTheme()}>
+      <Appbar.Content title="Dark Mode" />
         <Switch
           style={[{ backgroundColor: theme.colors.accent }]}
           color={'red'}
           value={isThemeDark}
+          onValueChange={toggleTheme}
         />
-      </TouchableRipple>
     </Appbar.Header>
-  );
-};
+  )
+}
 
 export default Header
+
+const styles = StyleSheet.create({})

@@ -8,7 +8,7 @@ const Login = () => {
         <View style={styles.loginContainer}>
             <View/>
             <View style={styles.login}>
-                <Image style={styles.tinyLogo} source={require("./assets/VJit.png")}/>
+                <Image style={styles.tinyLogo} source={require("../../assets/VJit.png")}/>
                 <Title style={styles.title}>Login Portal</Title>
                 
                 <View style={styles.container} >
