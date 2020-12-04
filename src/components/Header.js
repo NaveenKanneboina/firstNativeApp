@@ -1,13 +1,17 @@
 import React from 'react';
 import { useTheme, Appbar, Switch } from 'react-native-paper';
 import { StyleSheet } from 'react-native'
-import { PreferencesContext } from "../context/PreferencesContext";
+// import { PreferencesContext } from "../context/PreferencesContext";
+import { useSelector , useDispatch } from "react-redux"
+import { darkTheme } from "../Actions"
 
 
 const Header = ({}) => {
 
   const theme = useTheme();
-  const { toggleTheme, isThemeDark } = React.useContext(PreferencesContext);
+  const dispatch = useDispatch();
+  const mode = useSelector(state => state.themes)
+  // const { toggleTheme, isThemeDark } = React.useContext(PreferencesContext);
   return (
     <Appbar.Header
       theme={{
@@ -20,8 +24,8 @@ const Header = ({}) => {
         <Switch
           style={[{ backgroundColor: theme.colors.accent }]}
           color={'red'}
-          value={isThemeDark}
-          onValueChange={toggleTheme}
+          value={mode}
+          onValueChange={()=>dispatch(darkTheme())}
         />
     </Appbar.Header>
   )

@@ -29,8 +29,6 @@ const content = "We will use Paper's Switch for this purpose.We will use Paper's
             <View>
                 <View flexDirection="row" justifyContent="space-around">
                     <Button onPress={() =>
-                    navigation?.push('Login')}>Log IN</Button>
-                    <Button onPress={() =>
                     navigation?.push('ToDo')}> Add Tasks</Button>
                 </View>
             </View>

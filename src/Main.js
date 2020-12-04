@@ -4,39 +4,22 @@ import { NavigationContainer, DarkTheme as NavigationDarkTheme, DefaultTheme as 
 import { Provider as PaperProvider, DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme,} from 'react-native-paper';
 import merge from 'deepmerge';
 import Navigation from "./navigation/Navigation"
-import DrawerNavigation from "./navigation/DrawerNavigation"
-import { PreferencesContext } from "./context/PreferencesContext"
+import { useSelector } from "react-redux"
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
 export default function Main() {
-    
-  const [isThemeDark, setIsThemeDark] = React.useState(false);
 
+  const isThemeDark = useSelector(state => state.themes)
   const theme = isThemeDark ? CombinedDarkTheme : CombinedDefaultTheme;
 
-  const toggleTheme = React.useCallback(() => {
-    return setIsThemeDark(!isThemeDark);
-  }, [isThemeDark]);
-
-  const preferences = React.useMemo(
-    () => ({
-      toggleTheme,
-      isThemeDark,
-    }),
-    [toggleTheme, isThemeDark]
-  );
-
   return (
-        <PreferencesContext.Provider value={preferences}>
           <PaperProvider theme={theme}>
             <NavigationContainer theme={theme}>
               <Navigation />
-              {/* <DrawerNavigation /> */}
             </NavigationContainer>
           </PaperProvider>
-        </PreferencesContext.Provider>
   );
 }
 
