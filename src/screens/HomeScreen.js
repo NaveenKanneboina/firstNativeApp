@@ -6,10 +6,11 @@ import Header from "../components/Header"
 const HomeScreen = ({navigation}) => {
 
 const title = "Naveen Nani 🤟🤟"
-const content = "We will use Paper's Switch for this purpose."
+const content = "We will use Paper's Switch for this purpose.We will use Paper's Switch for this purposeWe will use Paper's Switch for this purpose"
 
     return (
         <>
+            <Header />
             <TouchableOpacity
                 onPress={() =>
                 navigation?.push('Details', {
@@ -26,9 +27,12 @@ const content = "We will use Paper's Switch for this purpose."
                 </Card>
             </TouchableOpacity>
             <View>
-                <Header />
-                <Button onPress={() =>
-                navigation?.push('Login')}>Log IN</Button>
+                <View flexDirection="row" justifyContent="space-around">
+                    <Button onPress={() =>
+                    navigation?.push('Login')}>Log IN</Button>
+                    <Button onPress={() =>
+                    navigation?.push('ToDo')}> Add Tasks</Button>
+                </View>
             </View>
         </>
     )

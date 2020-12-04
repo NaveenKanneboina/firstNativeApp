@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from "../screens/HomeScreen"
 import DetailsScreen from "../screens/DetailsScreen"
 import Login from "../screens/Login"
+import ToDo from "../screens/ToDo"
 
 const Navigation = () => {
 
@@ -13,6 +14,7 @@ const Navigation = () => {
         <>
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="ToDo" component={ToDo} />
             <Stack.Screen name="Details" component={DetailsScreen} />
             <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>

@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer, DarkTheme as NavigationDarkTheme, DefaultTheme as NavigationDefaultTheme } from '@react-navigation/native';
 import { Provider as PaperProvider, DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme,} from 'react-native-paper';
 import merge from 'deepmerge';
-// import Navigation from "./navigation/Navigation"
-import Drawer from "./Drawer/Drawer"
+import Navigation from "./navigation/Navigation"
+import DrawerNavigation from "./navigation/DrawerNavigation"
 import { PreferencesContext } from "./context/PreferencesContext"
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
@@ -32,7 +32,8 @@ export default function Main() {
         <PreferencesContext.Provider value={preferences}>
           <PaperProvider theme={theme}>
             <NavigationContainer theme={theme}>
-              <Drawer theme={theme} />
+              <Navigation />
+              {/* <DrawerNavigation /> */}
             </NavigationContainer>
           </PaperProvider>
         </PreferencesContext.Provider>
