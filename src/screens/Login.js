@@ -1,14 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, Text, View, Image} from 'react-native'
 import { TextInput, Button, Title, Searchbar } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from "react-redux"
+import { user } from "../Actions"
+
 
 const Login = () => {
+
+    const dispatch = useDispatch();
+
     return (
         <View style={styles.loginContainer}>
             <View/>
             <View style={styles.login}>
-                <Image style={styles.tinyLogo} source={require("./assets/VJit.png")}/>
+                <Image style={styles.tinyLogo} source={require("../../assets/VJit.png")}/>
                 <Title style={styles.title}>Login Portal</Title>
                 
                 <View style={styles.container} >
@@ -21,7 +27,8 @@ const Login = () => {
                     <Icon name="eye" size={20} style={styles.icons}/>
                 </View>
                 <View flexDirection="row">
-                    <Button style={styles.button} mode="contained">Log in</Button>
+                    <Button style={styles.button} mode="contained" 
+                    onPress={()=> dispatch(user())}>Log in</Button>
                     <Button style={styles.button} >Sign Up</Button>
                 </View>
                 <Text style={{fontSize:16}}>Forgot Password ?</Text>
